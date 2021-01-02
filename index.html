@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section><h1>Regular expression</h1></section>
+				<section>
+					<img class="r-stretch" src="./img/Kleene.jpg">
+					<p>Stephen Cole Kleene, who helped invent the concept</p>
+				</section>
+				<section>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec">
+							RegExp.prototype.exec()
+						</a>
+					</p>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test">
+							RegExp.prototype.test()
+						</a>
+					</p>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match">
+							String.prototype.match()
+						</a>
+					</p>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll">
+							String.prototype.matchAll()
+						</a>
+					</p>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">
+							String.prototype.replace()
+						</a>
+					</p>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll">
+							String.prototype.replaceAll()
+						</a>
+					</p>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search">
+							String.prototype.search()
+						</a>
+					</p>
+					<p>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">
+							String.prototype.split()
+						</a>
+					</p>
+				</section>
+				<section>
+					<section><h2>Creating a regular expression</h2></section>
+					<section>
+						Regular expression literal
+						<pre>
+							<code data-trim data-noescape>
+								let re = /ab+c/;
+							</code>
+
+						</pre>
+					</section>
+					<section>
+						Constructor function
+						<pre>
+							<code data-trim data-noescape>
+								let re = new RegExp('ab+c');
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section><h2>Writing a regular expression pattern</h2></section>
+					<section>
+						Using simple patterns
+						<pre>
+							<code data-trim data-noescape>
+								let re = /abc/;
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>"Hi, do you know your <span class="fragment highlight-red">abc</span>'s?"</p>
+					</section>
+					<section>
+						<p>"The latest airplane designs evolved from sl<span class="fragment highlight-red">abc</span>raft."</p>
+					</section>
+					<section>
+						<p>"Grab crab"</p>
+					</section>				
+					<section>
+						Using special characters
+						<pre>
+							<code data-trim data-noescape>
+								let re = /ab*c/;
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>"cbb<span class="fragment highlight-red">abbbbc</span>debc"</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Special characters in regular expressions.</h2>
+						<img src="./img/Charaster.jpg">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Escaping</h2>
+					</section>
+					<section>
+						<pre>
+							<code data-trim data-noescape>
+								let re = /a\*b/;
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code data-trim data-noescape>
+								new RegExp("a\\*b") 
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<p>Using parentheses</p>
+					<img src="./img/parenthese.jpg">
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

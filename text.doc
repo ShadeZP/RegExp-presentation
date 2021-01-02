@@ -1,0 +1,97 @@
+A regular expression (shortened as regex or regexp; also referred to as rational expression) is a sequence of characters that define a search pattern. Usually such patterns are used by string-searching algorithms for "find" or "find and replace" operations on strings, or for input validation. It is a technique developed in theoretical computer science and formal language theory.
+
+<--NEXT SLIDE-->
+
+The concept arose in the 1950s when the American mathematician Stephen Cole Kleene formalized the description of a regular language. The concept came into common use with Unix text-processing utilities. Different syntaxes for writing regular expressions have existed since the 1980s, one being the POSIX standard and another, widely used, being the Perl syntax.
+
+Regular expressions are used in search engines, search and replace dialogs of word processors and text editors, in text processing utilities such as sed and AWK and in lexical analysis. Many programming languages provide regex capabilities either built-in or via libraries. 
+
+<--NEXT SLIDE-->
+
+In JavaScript, regular expressions are also objects. These patterns are used with the exec() and test() methods of RegExp, and with the match(), matchAll(), replace(), replaceAll(), search(), and split() methods of String.
+
+You can read about all these methods by clicking on the links in the presentation
+
+<--NEXT SLIDE-->
+
+Now let's talk about how we can create regular expressions in javascript
+You construct a regular expression in one of two ways:
+
+<--DOWN-->
+
+Using a regular expression literal, which consists of a pattern enclosed between slashes.
+Regular expression literals provide compilation of the regular expression when the script is loaded. If the regular expression remains constant, using this can improve performance.
+
+<--DOWN-->
+
+Or calling the constructor function of the RegExp object.
+Using the constructor function provides runtime compilation of the regular expression. Use the constructor function when you know the regular expression pattern will be changing, or you don't know the pattern and are getting it from another source, such as user input.
+
+<--NEXT-->
+
+A regular expression pattern is composed of simple characters, such as /abc/, or a combination of simple and special characters.
+
+<--DOWN-->
+
+Simple patterns are constructed of characters for which you want to find a direct match. For example, the pattern /abc/ matches character combinations in strings only when the exact sequence "abc" occurs (all characters together and in that order).
+
+<--DOWN-->
+
+ Such a match would succeed in the strings "Hi, do you know your abc's?" 
+ 
+ <--DOWN-->
+ 
+ and "The latest airplane designs evolved from slabcraft." In both cases the match is with the substring "abc". 
+ 
+ <--DOWN-->
+
+ There is no match in the string "Grab crab" because it does not contain the exact substring "abc".
+
+<--DOWN-->
+
+When the search for a match requires something more than a direct match, such as finding one or more b's, or finding white space, you can include special characters in the pattern. For example, to match a single "a" followed by zero or more "b"s followed by "c", you'd use the pattern /ab*(asterisk)c/: the *(asterisk) after "b" means "0 or more occurrences of the preceding item." 
+
+<--DOWN-->
+
+In the string "cbbabbbbcdebc", this pattern will match
+
+<--DOWN-->
+
+ the substring "abbbbc".
+
+ <--NEXT-->
+ 
+Javascript maintains lists of the different special characters.
+
+Assertions
+Assertions include boundaries, which indicate the beginnings and endings of lines and words, and other patterns indicating in some way that a match is possible (including look-ahead, look-behind, and conditional expressions).
+
+Character classes
+Distinguish different types of characters. For example, distinguishing between letters and digits.
+
+Groups and ranges
+Indicate groups and ranges of expression characters.
+
+Quantifiers
+Indicate numbers of characters or expressions to match.
+
+Unicode property escapes
+Distinguish based on unicode character properties, for example, upper- and lower-case letters, math symbols, and punctuation.
+
+<--NEXT-->
+
+Escaping
+
+If you need to use any of the special characters literally (actually searching for a "*"(asterisk), for instance), you must escape it by putting a backslash in front of it. For instance, to search for "a" followed by "*"(asterisk) followed by "b", you'd use /a\*(asterisk)b/ — the backslash "escapes" the "*", making it literal instead of special.
+
+Similarly, if you're writing a regular expression literal and need to match a slash ("/"), you need to escape that (otherwise, it terminates the pattern). For instance, to search for the string "/example/" followed by one or more alphabetic characters, you'd use /\/example\/[a-z]+/i—the backslashes before each slash make them literal.
+
+To match a literal backslash, you need to escape the backslash. For instance, to match the string "C:\" where "C" can be any letter, you'd use /[A-Z]:\\/ — the first backslash escapes the one after it, so the expression searches for a single literal backslash.
+
+If using the RegExp constructor with a string literal, remember that the backslash is an escape in string literals, so to use it in the regular expression, you need to escape it at the string literal level. /a\*b/ and new RegExp("a\\*b") create the same expression, which searches for "a" followed by a literal "*"(asterisk) followed by "b".
+
+<--NEXT-->
+
+Using parentheses
+
+Parentheses around any part of the regular expression pattern causes that part of the matched substring to be remembered. Once remembered, the substring can be recalled for other use. See Groups and ranges for more details.
